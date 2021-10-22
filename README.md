@@ -8,6 +8,27 @@
 
 FMM is an open source map matching framework in C++ and Python. It solves the problem of matching noisy GPS data to a road network. The design considers maximizing performance, scalability and functionality.
 
+### Install in Conda
+
+```bash
+# add gcc/g++ in conda env
+conda install gcc_linux-64
+conda install gxx_linux-64
+
+# add package
+conda install -c conda-forge gdal  swig  libgdal libboost
+
+# activate gcc in conda
+export CONDA_BUILD=1
+conda activate base
+
+# try to build
+cd build
+cmake ..
+make -j4
+make install
+```
+
 ### Online demo
 
 Check the [online demo](https://fmm-demo.herokuapp.com/).
