@@ -27,7 +27,7 @@ project(fmm)
 
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-O3 -DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE")
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)#change 11 -> 14 for lastest libboost(1.73.0+)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/build")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -148,6 +148,11 @@ target_link_libraries(stmatch FMMLIB)
 
 add_executable(h3mm src/app/h3mm.cpp)
 target_link_libraries(h3mm FMMLIB)
+
+# Default install to Conda
+if(CONDA_PREFIX)
+    set(CMAKE_INSTALL_PREFIX "${CONDA_PREFIX}")
+endif
 
 message(STATUS "Installation folder ${CMAKE_INSTALL_PREFIX}")
 
